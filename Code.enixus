@@ -1,0 +1,127 @@
+/* Rocio Karina Tapia Alcantara -- 21-EIIT-1-015 -- Seccion 0541 */
+
+create database ENIXUS
+ON
+primary
+		(name = Enixusprimary,
+		filename = 'C:\ENIXUS_BD\Enixusprimary.mdf',
+		size=50MB,
+		maxsize=200,
+		filegrowth=20),
+filegroup Enixus1FG
+		(name = EnixusData1,
+		filename = 'C:\ENIXUS_BD\EnixusData1.ndf',
+		size=200MB,
+		maxsize=800,
+		filegrowth=100)
+Log on 
+		(name = Enixuslog,
+		filename = 'C:\ENIXUS_BD\Enixuslog.ldf',
+		size=300MB,
+		maxsize=800,
+		filegrowth=100)
+
+create table Clientes
+(Nombre nvarchar(50),
+ID char (10) primary key,
+Direccion nvarchar(50),
+Telefono nvarchar(50),
+Servicio nvarchar(50),
+Contrato nvarchar(10),
+Costo_M nvarchar(10),
+Costo_A nvarchar(10))
+
+INSERT INTO Clientes (Nombre, ID, Direccion, Telefono, Servicio, Contrato, Costo_M, Costo_A) 
+VALUES ('Wendys', '0101', 'Ave John F Kennedy', '843970000', 'Comida Rapida', '1 Año', '47.5', '570.00'),
+ ('Daisy', '0202', 'Ave Charles de Gaulle', '8292971000', 'Pasteleria', '3 Años', '43.33', '520.00'),
+('Don Ramon SRL', '0303', 'Calle Primaveral', '8091972000', 'Panaderia', '1 Año', '47.5', '570.00'),
+('Liss Store', '0404', 'Avenida 6', '8493370401', 'Venta de Ropa/Prendas', '2 Años', '45.00', '540.00'),
+('La Esquina', '0505', 'Calle Novena', '8094567891', 'Mini Mercado', '4 Años', '41.67', '500.00'),
+('10 y 20', '0606', 'Avenida Churchill', '8494560000', 'Tienda', '1 Año', '47.5', '570.00'),
+('GIGI', '0707', 'Avenida  Novena', '8493977891', 'Venta de Ropa/Prendas', '2 Años', '45.00', '540.00'),
+('BANANA', '0808', 'Barrio Chino', '8093971000', 'Restaurante', '4 Años', '41.67', '500.00'),
+('MTech', '0909', 'Ave Florentino', '8493810230', 'Venta de Aparatos Electronicos', '1 Año', '47.5', '570.00'),
+('Hello Art', '0102', 'Ave Jacobo Majluta', '8293421227', 'Tienda', '2 Años', '45.00', '540.00');
+
+create table Empleados
+(E_Nombre nvarchar(50),
+E_Apellido nvarchar(50),
+ID char (10) primary key,
+Telefono nvarchar(50),
+Direccion nvarchar(50),
+E_Correo nvarchar(50),
+Salario nvarchar(50))
+
+INSERT INTO Empleados (E_Nombre, E_Apellido, ID, Telefono, Direccion, E_Correo, Salario)
+ VALUES ('Carlos', 'Tapia', '101845', '8293421227', 'Ave Florentino', 'carlos56Q@gmail.com', '36,500.00'),
+ ('Carolyn', 'Silvestre', '181045', '8293420230', 'Ave Charles de Gaulle', 'SilvestreC@gmail.com', '43,400.00'),
+ ('Llanet', 'Fersola', '451810', '8493425640', 'Calle Bravo', 'llanetfersola@gmail.com', '53,045.00'),
+ ('Eduardo', 'Alacantara', '251810', '8493425640', 'Avenida España', 'eduardoalc@gmail.com', '24,900.00'),
+ ('Jose', 'Gomez', '451234', '8294329876', 'Calle Gascue', 'JoseG@gmail.com', '53,045.00'),
+ ('David', 'Sepulveda', '341234', '8294029826', 'Calle Primera', 'DS2019@gmail.com', '60,400.00'),
+ ('Esmerlin', 'Nicolas', '246824', '8294022712', 'Calle 11B', 'Morenito02@gmail.com', '32,400.00'),
+ ('Camila', 'Peña', '543824', '8093220611', 'Calle Sabana', 'camilapeña@gmail.com', '25,900.00'),
+ ('Tomas', 'Beato', '195912', '8293072829', 'Calle Tercera', 'tomas_beato29@gmail.com', '43,700.00'),
+ ('Rosa', 'Bautista', '220870', '8298631227', 'Ave Jose Marti', 'Rosa1227@gmail.com', '44,000.00');
+
+ create table Ordenes
+(ID char (10) primary key,
+Producto nvarchar(10),
+Cantidad nvarchar(50),
+Precio nvarchar(50))
+
+INSERT INTO Ordenes (ID, Producto, Cantidad, Precio)
+VALUES ('1234567', 'Ropa', '3 piezas', '1,550.00'),
+ ('2468102', 'Pastel', '1 pastel', '345.00'),
+ ('3456789', 'Llavero', '5 unidades', '500.00'),
+ ('8467329', 'Tablet', '2 unidades', '19,400'),
+ ('4728473', 'Galletas', '30 unidades', '280.00'),
+ ('8264527', 'Comida', '2 Combos No.3', '690.00'),
+ ('2345678', 'Cupcakes', '10 unidades', '400.00'),
+ ('3857648', 'Cafe', '20 paquestes', '200.00'),
+ ('5278264', 'Poster', '2 unidades', '90.00'),
+ ('3454527', 'Telefono', '1 unidad', '22,950.00');
+
+ create table Producto
+(Nombre nvarchar(50),
+ID char (10) primary key,
+Precio nvarchar(50),
+Cantidad_dis int not null,
+Categoria nvarchar(50))
+
+INSERT INTO Producto (Nombre, ID, Precio, Cantidad_dis, Categoria)
+VALUES ('Jean', 'J234', '350.00', '435', 'Pantalon'),
+ ('Cupcake', 'C567', 'C567', '40', 'Postre'),
+ ('Buffalo', '345B', '375.00', '10', 'Hamburguesa'),
+ ('Jack Daniels', '678D', '10.00', '60', 'Salsa'),
+ ('Samsung Galaxy', 'SG73849', '22,950.00', '5', 'Telefono'),
+ ('Nike Air', '123NA', '2,100.00', '7', 'Zapato'),
+ ('Latitude', 'E5410', '5,989.55', '2', 'Computadora'),
+ ('Adam’s Secret', 'AD23', '125.00', '125', 'Ropa Interior'),
+ ('Cubo 3x3', 'C334', '135.00', '236', 'Juguete'),
+ ('ChocoFresa', '738299', '75.00', '13', 'Helado');
+
+ create table Detalles_Ord
+(IDOrden char (10),
+IDCliente char (10),
+IDEmpleado char (10),
+IDProducto char (10),
+Fecha_Orden nvarchar(10),
+Estado nvarchar(50)
+CONSTRAINT fk_Clientes FOREIGN KEY (IDCliente) REFERENCES Clientes (ID),
+CONSTRAINT fk_Empleados FOREIGN KEY (IDEmpleado) REFERENCES Empleados (ID),
+CONSTRAINT fk_Producto FOREIGN KEY (IDProducto) REFERENCES Producto (ID),
+CONSTRAINT fk_Orden FOREIGN KEY (IDOrden) REFERENCES Ordenes (ID)
+);
+
+INSERT INTO Detalles_Ord ( Fecha_Orden, Estado)
+VALUES ('12/11/2022', 'Completada'),
+ ('02/12/2022', 'En Progreso'),
+ ('08/09/2017', 'Completada'),
+ ('12/12/2022', 'Cancelada'),
+ ('07/11/2022', 'Completada'),
+ ('09/01/2020', 'Completada'),
+ ('12/06/2022', 'Cancelada'),
+ ('14/02/2022', 'Completada'),
+ ('15/12/2022', 'En Progreso'),
+ ('20/07/2019', 'Completada');
